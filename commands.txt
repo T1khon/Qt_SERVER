@@ -1,0 +1,27 @@
+# Команды для сборки и запуска Docker-образа
+
+# 1. Собрать образ (выполнять из папки с Dockerfile)
+docker build -t qt-tcp-server .
+
+# 2. Запустить контейнер
+docker run -d -p 65432:65432 --name qt-server qt-tcp-server
+
+# 3. Проверить, что контейнер запущен
+docker ps
+
+# 4. Посмотреть логи сервера
+docker logs qt-server
+
+# 5. Остановить контейнер
+docker stop qt-server
+
+# --- DockerHub ---
+
+# 6. Залогиниться в DockerHub
+docker login
+
+# 7. Тегировать образ (замени YOUR_USERNAME на свой логин DockerHub)
+docker tag qt-tcp-server YOUR_USERNAME/qt-tcp-server:latest
+
+# 8. Опубликовать образ
+docker push YOUR_USERNAME/qt-tcp-server:latest
